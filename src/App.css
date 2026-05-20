@@ -1,0 +1,141 @@
+@import "./Fonts.css";
+
+:root {
+    /* Color */
+    --green: hsl(172deg 96% 15%);
+    --red: hsl(5deg 85% 54%);
+
+    font-family: "Averia Sans Libre";
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    color: #0f0f0f;
+    background-color: hsl(172deg 96% 15%);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Averia Sans Libre", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: grid;
+    grid-template-rows: 150px 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 1.5rem;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    appearance: none;
+    font-family: "Averia Sans Libre";
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    color: hsl(58deg 86% 90%);
+    background-color: hsl(5deg 85% 54%);
+    border: none;
+    border-radius: 8px;
+}
+
+.stop-button {
+    animation: slideDown 300ms ease-out;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.timer__time {
+    font-size: 4rem;
+    line-height: 1.4;
+    color: hsl(58deg 86% 90%);
+    text-shadow: 3px 3px hsl(0 0% 0% / 0.25);
+}
+
+.pomochan {
+    position: relative;
+    padding-top: 1.2rem;
+    padding-bottom: 2.5rem;
+}
+
+.pomochan img {
+    position: relative;
+    z-index: 2;
+    transform: translateY(10%);
+    animation: jump 2s ease-in-out infinite alternate;
+}
+
+.pomochan::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 20%;
+    background-color: hsl(0 0% 0% / 0.5);
+    border-radius: 100%;
+    margin: auto;
+    z-index: -1;
+    transform: translateY(-10%);
+    animation: scale 2s ease-in-out infinite alternate;
+}
+
+@keyframes jump {
+    from {
+        transform: translateY(10%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes scale {
+    from {
+        scale: 1;
+        opacity: 1;
+    }
+    to {
+        scale: 0.9;
+        opacity: 0.9;
+    }
+}
+
+@keyframes shrink {
+    from {
+        scale: 1;
+    }
+    to {
+        scale: 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
