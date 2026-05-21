@@ -35,7 +35,7 @@ function App() {
       const interval = setInterval(timerTick, 1000);
       return () => clearInterval(interval);
     }
-  }, [showTimer, timerTick]);
+  }, [showTimer]);
 
   const startTimer = () => setShowTimer(true);
   const stopTimer = () => {
@@ -47,21 +47,21 @@ function App() {
     <main>
       <div className="timer">
         {!showTimer && (
-          <button className="start-button" onClick={startTimer}>
+          <button className="timer__start" onClick={startTimer}>
             <PlayIcon /> Start Timer
           </button>
         )}
         {showTimer && (
           <>
             <div className="timer__time">{timeString(timer)}</div>
-            <button className="stop-button" onClick={stopTimer}>
+            <button className="timer__stop" onClick={stopTimer}>
               <StopIcon /> Stop Timer
             </button>
           </>
         )}
       </div>
       <div className="pomochan">
-        <img width={200} src={pomochan} alt="Pomochan" />
+        <img width={190} src={pomochan} alt="Pomochan" />
       </div>
     </main>
   );
@@ -77,9 +77,9 @@ function PlayIcon() {
       viewBox="0 0 24 24"
       fill="currentColor"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
     </svg>
@@ -96,9 +96,9 @@ function StopIcon() {
       viewBox="0 0 24 24"
       fill="currentColor"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <rect width="18" height="18" x="3" y="3" rx="2" />
     </svg>

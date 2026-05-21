@@ -4,6 +4,7 @@
     /* Color */
     --green: hsl(172deg 96% 15%);
     --red: hsl(5deg 85% 54%);
+    --red-dark: hsl(5deg 75% 45%);
 
     font-family: "Averia Sans Libre";
     font-size: 16px;
@@ -52,21 +53,26 @@ button {
     font-weight: bold;
     padding: 0.5rem 1.5rem;
     color: hsl(58deg 86% 90%);
-    background-color: hsl(5deg 85% 54%);
+    background-color: var(--red);
     border: none;
     border-radius: 8px;
 }
 
-.stop-button {
-    animation: slideDown 300ms ease-out;
+button:hover {
+    background-color: var(--red-dark);
+}
+
+button:active {
+    box-shadow: inset 0px 0px 20px hsl(0 0 0 / 25%);
 }
 
 .timer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr 48px;
+    justify-items: center;
     align-self: center;
+    width: 220px;
+    height: 140px;
 }
 
 .timer__time {
@@ -74,6 +80,18 @@ button {
     line-height: 1.4;
     color: hsl(58deg 86% 90%);
     text-shadow: 3px 3px hsl(0 0% 0% / 0.25);
+    grid-row: 1;
+}
+
+.timer__start {
+    grid-row: 2;
+    animation: slideDown 300ms ease-in-out reverse;
+    transform: translateY(-100%);
+}
+
+.timer__stop {
+    animation: slideDown 300ms ease-in-out;
+    grid-row: 2;
 }
 
 .pomochan {
@@ -133,7 +151,7 @@ button {
 
 @keyframes slideDown {
     from {
-        transform: translateY(-50%);
+        transform: translateY(-100%);
     }
     to {
         transform: translateY(0);
