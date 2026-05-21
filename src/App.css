@@ -85,13 +85,16 @@ button:active {
 
 .timer__start {
     grid-row: 2;
-    animation: slideDown 300ms ease-in-out reverse;
     transform: translateY(-100%);
 }
 
 .timer__stop {
     animation: slideDown 300ms ease-in-out;
     grid-row: 2;
+}
+
+.timer--animating .timer__start {
+    animation: slideDown 300ms ease-in-out reverse;
 }
 
 .pomochan {

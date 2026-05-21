@@ -21,6 +21,7 @@ const TIMER_DURATION = 1500; // 25 minutes
 function App() {
   const [timer, setTimer] = useState(TIMER_DURATION);
   const [showTimer, setShowTimer] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const timerTick = useEffectEvent(() => {
     setTimer((prevTimer) => prevTimer - 1);
@@ -37,15 +38,21 @@ function App() {
     }
   }, [showTimer]);
 
-  const startTimer = () => setShowTimer(true);
+  const startTimer = () => {
+    setIsAnimating(true);
+    setShowTimer(true);
+  };
   const stopTimer = () => {
     setTimer(TIMER_DURATION);
     setShowTimer(false);
   };
 
+  let timerClassName = "timer";
+  if (isAnimating) timerClassName += " timer--animating";
+
   return (
     <main>
-      <div className="timer">
+      <div className={timerClassName}>
         {!showTimer && (
           <button className="timer__start" onClick={startTimer}>
             <PlayIcon /> Start Timer
