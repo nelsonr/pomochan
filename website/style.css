@@ -75,7 +75,7 @@ body {
     margin-bottom: 0.2em;
 }
 .hero-text h1 em {
-    font-style: italic;
+    font-style: normal;
     color: var(--red-lt);
 }
 .hero-text h3 {
