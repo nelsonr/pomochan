@@ -1,7 +1,7 @@
 import "./App.css";
 import pomochan from "./assets/pomochan.png";
 import { invoke } from "@tauri-apps/api/core";
-import { use, useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 
 function timeString(seconds: number) {
   const minutesStr = Math.floor(seconds / 60)
