@@ -1,7 +1,7 @@
 import "./App.css";
 import pomochan from "./assets/pomochan.png";
 import { invoke } from "@tauri-apps/api/core";
-import { useEffect, useEffectEvent, useState } from "react";
+import { use, useEffect, useEffectEvent, useState } from "react";
 
 function timeString(seconds: number) {
   const minutesStr = Math.floor(seconds / 60)
@@ -23,11 +23,32 @@ function App() {
   const [showTimer, setShowTimer] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  const startTimer = () => {
+    setIsAnimating(true);
+    setShowTimer(true);
+  };
+
+  const stopTimer = () => {
+    setTimer(TIMER_DURATION);
+    setShowTimer(false);
+  };
+
   const timerTick = useEffectEvent(() => {
     setTimer((prevTimer) => prevTimer - 1);
     if (timer === 0) {
       stopTimer();
       notify();
+    }
+  });
+
+  // Toggle timer on space key press
+  const onSpacePress = useEffectEvent((ev: KeyboardEvent) => {
+    if (ev.key !== " ") return;
+
+    if (showTimer) {
+      stopTimer();
+    } else {
+      startTimer();
     }
   });
 
@@ -38,14 +59,10 @@ function App() {
     }
   }, [showTimer]);
 
-  const startTimer = () => {
-    setIsAnimating(true);
-    setShowTimer(true);
-  };
-  const stopTimer = () => {
-    setTimer(TIMER_DURATION);
-    setShowTimer(false);
-  };
+  useEffect(() => {
+    document.addEventListener("keyup", onSpacePress);
+    return () => document.removeEventListener("keyup", onSpacePress);
+  }, []);
 
   let timerClassName = "timer";
   if (isAnimating) timerClassName += " timer--animating";
