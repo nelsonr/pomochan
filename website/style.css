@@ -1,0 +1,228 @@
+@font-face {
+    font-family: "Averia Sans Libre";
+    src: url("assets/fonts/Averia_Sans_Libre/AveriaSansLibre-Regular.woff2")
+        format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Averia Sans Libre";
+    src: url("assets/fonts/Averia_Sans_Libre/AveriaSansLibre-Bold.woff2")
+        format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --green: hsl(172deg 96% 15%);
+    --green-mid: hsl(172deg 96% 18%);
+    --red: hsl(5deg 85% 54%);
+    --red-lt: hsl(5deg 85% 62%);
+    --cream: hsl(58deg 86% 90%);
+    --cream-dim: hsl(58deg 40% 75%);
+
+    font-family: "Averia Sans Libre", sans-serif;
+    font-size: 16px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    background-color: var(--green);
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: radial-gradient(var(--green-mid) 50%, var(--green) 100%);
+    color: var(--cream);
+    min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+    align-items: center;
+    gap: 0 64px;
+    padding: 0 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: end;
+}
+
+.hero-text h1,
+.hero-text h3 {
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--cream);
+    text-shadow: 2px 2px hsl(0 0% 0% / 0.25);
+    margin-bottom: 0.2em;
+}
+.hero-text h1 em {
+    font-style: italic;
+    color: var(--red-lt);
+}
+.hero-text h3 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    margin-bottom: 36px;
+    max-width: 360px;
+}
+
+.hero-cta {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: start;
+}
+
+.hero-cta .btn-download {
+    font-size: 1.3rem;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Averia Sans Libre", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.55rem 1.6rem;
+    color: var(--cream);
+    background-color: var(--red);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.15s;
+}
+.btn-download:hover {
+    background-color: var(--red-lt);
+    transform: translateY(-2px);
+}
+
+/* ── SCREENSHOT ── */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    grid-row: 1 / 3;
+    grid-column: 2;
+}
+
+.hero-visual img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-bottom: -30px;
+}
+
+/* ── DOWNLOAD SECTION ── */
+.download {
+    border-top: 1px solid hsl(0 0% 100% / 0.08);
+    padding: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.download h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cream);
+    text-shadow: 2px 2px hsl(0 0% 0% / 0.2);
+    margin-bottom: 8px;
+}
+
+.download p {
+    font-size: 0.95rem;
+    color: var(--cream-dim);
+}
+
+.download__links {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+/* ── FOOTER ── */
+footer {
+    border-top: 1px solid hsl(0 0% 100% / 0.07);
+    padding: 24px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+}
+footer a {
+    color: var(--cream-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+footer a:hover {
+    color: var(--cream);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 24px;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .hero-text {
+        max-width: 420px;
+        align-self: center;
+    }
+
+    .hero-text p {
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+
+    .hero-cta {
+        align-self: center;
+    }
+
+    .hero-visual img {
+        margin-bottom: -10px;
+    }
+
+    .download,
+    footer {
+        padding: 60px 24px;
+    }
+}
